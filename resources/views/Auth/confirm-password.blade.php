@@ -1,26 +1,51 @@
-<x-guest-layout>
-    <div class="card w-96 bg-base-100 shadow-xl mx-auto p-6">
-        <p class="text-sm text-base-content mb-4">
-            {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+@extends('partials.layout')
+@section('title', 'Confirm Password')
+
+@section('content')
+
+<div class="card w-96 bg-base-100 shadow-xl mx-auto mt-6">
+    <div class="card-body p-8 space-y-6">
+
+        {{-- Message --}}
+        <p class="text-sm text-gray-600">
+            {{ __('This is a secure area. Please confirm your password before continuing.') }}
         </p>
 
-        <form method="POST" action="{{ route('password.confirm') }}">
+        <form method="POST" action="{{ route('password.confirm') }}" class="space-y-6">
             @csrf
 
-            <fieldset class="fieldset">
-                <legend class="fieldset-legend">@lang('Password')</legend>
-                <input type="password" name="password" class="input input-bordered"
-                       required autocomplete="current-password" />
-                @error('password')
-                    <p class="text-error text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </fieldset>
+            {{-- Password --}}
+            <label class="form-control w-full space-y-2">
+                <div class="label">
+                    <span class="label-text text-base">{{ __('Password') }}</span>
+                </div>
 
-            <div class="flex justify-end mt-4">
-                <button class="btn btn-primary">
+                <input
+                    type="password"
+                    name="password"
+                    class="input input-bordered w-full h-12"
+                    placeholder="{{ __('Password') }}"
+                    required
+                    autocomplete="current-password"
+                />
+
+                @error('password')
+                    <div class="label">
+                        <span class="label-text text-error">{{ $message }}</span>
+                    </div>
+                @enderror
+            </label>
+
+            {{-- Button --}}
+            <div class="flex justify-end pt-4">
+                <button class="btn btn-primary min-w-32">
                     {{ __('Confirm') }}
                 </button>
             </div>
+
         </form>
+
     </div>
-</x-guest-layout>
+</div>
+
+@endsection

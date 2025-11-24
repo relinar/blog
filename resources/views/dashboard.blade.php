@@ -1,19 +1,13 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-2xl font-bold text-base-content">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('partials.layout')
+@section('title', __('Dashboard'))
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="card bg-base-100 shadow-xl">
-                <div class="card-body text-base-content">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-
+@section('content')
+<div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+    <div class="card bg-base-100 shadow">
+        <div class="card-body">
+            <h2 class="card-title">{{ __('Dashboard') }}</h2>
+            <p>{{ __('You\'re logged in!') }}</p>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
