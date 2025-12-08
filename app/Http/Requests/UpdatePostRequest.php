@@ -11,11 +11,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-<<<<<<< HEAD
-        return false;
-=======
         return true;
->>>>>>> upstream/main
     }
 
     /**
@@ -26,12 +22,8 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-<<<<<<< HEAD
-            //
-=======
             'title' => 'required',
             'body' => 'nullable'
->>>>>>> upstream/main
         ];
     }
 }

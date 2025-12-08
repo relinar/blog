@@ -2,8 +2,6 @@
 @section('title', $post->title)
 @section('content')
     @include('partials.post-card', ['full' => true])
-<<<<<<< HEAD
-=======
 
     @if (session('status'))
         <div class="alert alert-success shadow-sm my-3">
@@ -46,5 +44,4 @@
             </div>
         </div>
     @endforeach
->>>>>>> upstream/main
 @endsection

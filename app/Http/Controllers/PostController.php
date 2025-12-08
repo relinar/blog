@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Auth;
->>>>>>> upstream/main
 
 class PostController extends Controller
 {
@@ -35,10 +32,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $post = new Post($request->validated());
-<<<<<<< HEAD
-=======
         $post->user()->associate(Auth::user());
->>>>>>> upstream/main
         $post->save();
         return redirect()->route('posts.index');
     }
@@ -56,11 +50,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-<<<<<<< HEAD
-        //
-=======
         return view('posts.edit', compact('post'));
->>>>>>> upstream/main
     }
 
     /**
@@ -68,12 +58,8 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-<<<<<<< HEAD
-        //
-=======
         $post->update($request->validated());
         return redirect()->route('posts.index');
->>>>>>> upstream/main
     }
 
     /**
@@ -81,9 +67,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-<<<<<<< HEAD
-        //
-=======
         $post->delete();
         return redirect()->route('posts.index');
     }
@@ -111,6 +94,5 @@ class PostController extends Controller
         $post = Post::onlyTrashed()->where('id', $post)->firstOrFail();
         $post->forceDelete();
         return redirect()->route('posts.deleted');
->>>>>>> upstream/main
     }
 }

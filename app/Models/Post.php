@@ -5,13 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-
-class Post extends Model
-{
-    /** @use HasFactory<\Database\Factories\PostFactory> */
-    use HasFactory;
-=======
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,7 +39,6 @@ class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory, SoftDeletes;
->>>>>>> upstream/main
 
     protected $fillable = ['title', 'body'];
 
@@ -61,8 +53,6 @@ class Post extends Model
             return nl2br(htmlspecialchars($this->body));
         });
     }
-<<<<<<< HEAD
-=======
 
     public function authHasLiked(): Attribute {
         return Attribute::get(function () {
@@ -90,5 +80,4 @@ class Post extends Model
     public function likes() {
         return $this->hasMany(Like::class);
     }
->>>>>>> upstream/main
 }

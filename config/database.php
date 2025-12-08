@@ -16,10 +16,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
-=======
     // Use the connection defined in the environment (defaults to sqlite if unset)
->>>>>>> upstream/main
     'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
