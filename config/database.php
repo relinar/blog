@@ -16,6 +16,7 @@ return [
     |
     */
 
+    // Use the connection defined in the environment (defaults to sqlite if unset)
     'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
