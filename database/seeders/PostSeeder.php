@@ -3,10 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
-<<<<<<< HEAD
-=======
 use App\Models\User;
->>>>>>> upstream/main
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,15 +14,11 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-<<<<<<< HEAD
-        Post::factory(1000)->create();
-=======
         $users = User::all();
         $posts = Post::factory(1000)->make()->sortBy('created_at');
         foreach($posts as $post) {
             $post->user()->associate($users->random());
             $post->save();
         }
->>>>>>> upstream/main
     }
 }

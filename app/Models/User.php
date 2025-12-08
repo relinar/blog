@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-<<<<<<< HEAD
-=======
 /**
  * @property int $id
  * @property string $name
@@ -36,7 +34,6 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
->>>>>>> upstream/main
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -75,8 +72,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-<<<<<<< HEAD
-=======
 
     public function posts(){
         return $this->hasMany(Post::class);
@@ -89,5 +84,4 @@ class User extends Authenticatable
     public function likes() {
         return $this->hasMany(Like::class);
     }
->>>>>>> upstream/main
 }

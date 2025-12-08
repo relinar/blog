@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "07054ce887608878632b5b8b8a383c55",
-=======
     "content-hash": "e070491a4de18ed105e5119f8c604cee",
->>>>>>> upstream/main
     "packages": [
         {
             "name": "brick/math",
@@ -6032,8 +6028,6 @@
     ],
     "packages-dev": [
         {
-<<<<<<< HEAD
-=======
             "name": "barryvdh/laravel-ide-helper",
             "version": "v3.6.0",
             "source": {
@@ -6180,7 +6174,6 @@
             "time": "2025-07-17T06:07:30+00:00"
         },
         {
->>>>>>> upstream/main
             "name": "brianium/paratest",
             "version": "v7.14.1",
             "source": {
@@ -6274,8 +6267,6 @@
             "time": "2025-10-06T08:26:52+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "composer/class-map-generator",
             "version": "1.7.0",
             "source": {
@@ -6424,7 +6415,6 @@
             "time": "2024-11-12T16:29:46+00:00"
         },
         {
->>>>>>> upstream/main
             "name": "doctrine/deprecations",
             "version": "1.1.5",
             "source": {
