@@ -1,51 +1,39 @@
-@extends('partials.layout')
-@section('title', 'Verify Email')
+<x-guest-layout>
+    <form method="POST" action="{{ route('password.store') }}">
+        @csrf
 
-@section('content')
+        <!-- Password Reset Token -->
+        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-<div class="card w-[32rem] bg-base-100 shadow-xl mx-auto mt-10">
-    <div class="card-body space-y-6 p-8">
-
-        {{-- Explanation --}}
-        <p class="text-sm opacity-80 leading-relaxed">
-            {{ __('Thanks for signing up! Before getting started, please verify your email address by clicking the link we sent to you. If you did not receive the email, you can request another one below.') }}
-        </p>
-
-        {{-- Success message --}}
-        @if (session('status') == 'verification-link-sent')
-            <div class="alert alert-success">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span>{{ __('A new verification link has been sent to your email address.') }}</span>
-            </div>
-        @endif
-
-        {{-- Actions --}}
-        <div class="flex items-center justify-between pt-2">
-
-            {{-- Resend button --}}
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
-                <button class="btn btn-primary">
-                    {{ __('Resend Verification Email') }}
-                </button>
-            </form>
-
-            {{-- Logout --}}
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button
-                    type="submit"
-                    class="btn btn-ghost text-sm"
-                >
-                    {{ __('Log Out') }}
-                </button>
-            </form>
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-    </div>
-</div>
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
 
-@endsection
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button>
+                {{ __('Reset Password') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>
