@@ -7,4 +7,8 @@
                  @include('partials.post-card')
             @endforeach
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 @endsection
