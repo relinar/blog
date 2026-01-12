@@ -111,7 +111,7 @@ class User extends Authenticatable
 
     public function feed():Attribute {
         return Attribute::get(function () {
-            $followeeIds = $this->followees()->select('id')->get()->pluck('id');
+            $followeeIds = $this->followees()->pluck('users.id')->toArray();
             return Post::whereIn('user_id', $followeeIds);
         });
     }

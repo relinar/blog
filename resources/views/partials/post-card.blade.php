@@ -10,7 +10,11 @@
         @else
             <p>{{ $post->snippet }}</p>
         @endisset
-        <p class="text-base-content/50"><a href="{{route('user', $post->user)}}">{{ $post->user->name }}</a></p>
+        @if($post->user)
+            <p class="text-base-content/50"><a href="{{ route('user', $post->user) }}">{{ $post->user->name }}</a></p>
+        @else
+            <p class="text-base-content/50">Unknown</p>
+        @endif
         <p class="text-base-content/50">{{ $post->created_at->diffForHumans() }}</p>
         <p class="text-base-content/50"><b>Comments: </b>{{ $post->comments_count }}</p>
         <p class="text-base-content/50"><b>Likes: </b>{{ $post->likes_count }}</p>

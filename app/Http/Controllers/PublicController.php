@@ -13,11 +13,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PublicController extends Controller
 {
     public function index() {
-        if(Auth::check()) {
-            $posts = Auth::user()->feed->with('user')->withCount('comments', 'likes')->latest()->simplePaginate(16);
-        } else {
-            $posts = Post::with('user')->withCount('comments', 'likes')->latest()->simplePaginate(16);
-        }
+        // Always show all posts on the public home page, even for authenticated users.
+        $posts = Post::with('user')
+                    ->withCount('comments', 'likes')
+                    ->latest()
+                    ->simplePaginate(16);
         return view('welcome', compact('posts'));
     }
 
