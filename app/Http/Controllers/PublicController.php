@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -16,9 +17,7 @@ class PublicController extends Controller
     }
 
     public function post(Post $post) {
-        $post->loadCount('comments', 'likes')->load(['comments' => function ($query) {
-            $query->latest()->with('user');
-        }]);
+        $post->loadCount('comments', 'likes')->load('comments');
         return view('post', compact('post'));
     }
 
@@ -33,5 +32,15 @@ class PublicController extends Controller
             $like->save();
         }
         return redirect()->back();
+    }
+
+    public function category(Category $category) {
+        $posts = $category->posts()
+                        ->with('user')
+                        ->withCount('comments', 'likes')
+                        ->latest()
+                        ->simplePaginate(16);
+
+        return view('welcome', compact('posts'));
     }
 }

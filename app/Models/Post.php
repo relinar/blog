@@ -56,12 +56,10 @@ class Post extends Model
 
     public function authHasLiked(): Attribute {
         return Attribute::get(function () {
-            $user = Auth::user();
-            if (!$user) {
-                return false;
+            if(Auth::check()) {
+                return $this->likes()->where('user_id', Auth::user()->id)->exists();
             }
-
-            return $this->likes()->where('user_id', $user->id)->exists();
+            return false;
         });
     }
 
@@ -79,5 +77,9 @@ class Post extends Model
 
     public function likes() {
         return $this->hasMany(Like::class);
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
     }
 }
